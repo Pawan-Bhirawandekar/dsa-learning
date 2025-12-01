@@ -1,11 +1,11 @@
 #include<stdio.h>
 #define SIZE 5
 int queue[SIZE];
-int front=-1,rear=-1;
+int front=-1,rear=-1,val;
 
-void insert(int item){
+void insertion(int item){
     if((rear+1)%SIZE==front){
-        printf("Queue Overflow\n");
+        printf("Queue is Overflow.\n");
         return;
     }
     if(front==-1){
@@ -15,27 +15,30 @@ void insert(int item){
         rear=(rear+1)%SIZE;
     }
     queue[rear]=item;
-    printf("%d element added in the queue.\n",item);
+    printf("%d element added in the queue.\n");
 }
 
 void deletion(){
-    if(front==-1 && rear==-1){
-        printf("\nQueue is empty.\n");
+    if(front==-1){
+        printf("\nQueue is empty.");
         return;
     }
     int deletedItem=queue[front];
     if(front==rear){
         front=-1;
         rear=-1;
+    }else{
+        front=(front+1)%SIZE;
     }
-    printf("Deleted element of queue is %d",deletedItem);
+    printf("%d element deleted from the queue.\n",deletedItem);
 }
 
 void display(){
-    if(front==-1){
-        printf("\nQueue is empty.\n");
+    if(front==-1||rear==-1){
+        printf("Queue is empty.\n");
         return;
     }
+    printf("\nQueue elements are: \n");
     int i=front;
     while(1){
         printf("%d\n",queue[i]);
@@ -44,8 +47,9 @@ void display(){
         i=(i+1)%SIZE;
     }
 }
+
 int main(){
-    int opt,val;
+    int opt;
     printf("\n*****Circular Queue Operations*****");
     printf("\n1.Insert\n2.Delete\n3.Display\n4.Exit\n");
     while(1){
@@ -54,7 +58,7 @@ int main(){
         switch(opt){
             case 1: printf("Enter element to insert: ");
             scanf("%d",&val);
-            insert(val);
+            insertion(val);
             break;
             case 2: deletion();
             break;
