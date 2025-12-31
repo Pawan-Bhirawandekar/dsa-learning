@@ -36,6 +36,23 @@ void inorder(struct Node *root){
     }
 }
 
+void search(struct Node *root,int key){
+    if(root==NULL){
+        printf("Element not found\n");
+        return;
+    }
+    if(root->data==key){
+        printf("\nElement found: %d in a tree.\n",root->data);
+        return;
+    }
+
+    if(key < root->data)
+        search(root->left,key);
+    else
+        search(root->right,key);
+    
+}
+
 
 int main(){
     struct Node *root = NULL;
@@ -50,6 +67,8 @@ int main(){
     
     printf("Inorder Traversal: ");
     inorder(root);
+
+    search(root,20);
     return 0;
-    
+
 }
