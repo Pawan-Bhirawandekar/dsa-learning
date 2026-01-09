@@ -36,6 +36,7 @@ int main(){
         
         if(arr[mid]==key){
             printf("%d element found at %d position.",key, mid);
+            found=1;
             return 0;
         }else if(arr[mid]<key){
             low=mid+1;
