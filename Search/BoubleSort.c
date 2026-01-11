@@ -26,7 +26,7 @@ int main(){
         }
     }
     
-    printf("Array elements in the sorted form: \n");
+    printf("Array elements in the sorted form:(Ascending order) \n");
     for(i=0;i<n;i++){
         printf("%d\n",arr[i]);
     }
